@@ -1,0 +1,55 @@
+# This file sets the configuration of the 'Product' entity.
+#
+# NOTE: this demo application splits the backend configuration into several
+# small files for educational purposes. In your application you can put the
+# entire backend configuration in just one file.
+#
+# The configuration options are explained in detail in the bundle documentation,
+# which is published at https://github.com/javiereguiluz/EasyAdminBundle
+easy_admin:
+    entities:
+        # the configuration of this entity is very verbose because it's used as
+        # an example to show all the configuration options available for entities
+        # check out the configuration of the other entities to see how concise
+        # can be the configuration of your backend
+        Banner:
+            class: App\Entity\Banner
+            label: 'Banners'
+            list:
+                actions: [ '-new' ]
+                fields:
+                    - id
+                    - { property: 'enabled', type: 'toggle' }
+                    - name
+                    - { property: 'backgroundColor', type: 'text' }
+                    - { property: 'link', type: 'url' }
+                    - { property: 'image', type: 'image', base_path: '%app.path.images%' }
+                    - { property: 'createdAt', format: 'j / M / Y' }
+#                    - { property: 'updatedAt', format: 'j / M / Y' }
+            edit:
+                form_options: { validation_groups: ['Default'] }
+                fields:
+                    - { property: 'imageFile', type: 'vich_image', help: 'Рекомендуемый размер: 720*554 px', type_options: { required: false, allow_delete: false } }
+            new:
+                form_options: { validation_groups: ['Default', 'add_page'] }
+                fields:
+                    - { property: 'imageFile', type: 'vich_image', help: 'Рекомендуемый размер: 720*554 px', type_options: { required: true } }
+            show:
+                fields:
+                    - id
+                    - { property: 'name', css_class: 'large' }
+                    - { property: 'link', css_class: 'large' }
+                    - { property: 'enabled', label: 'Published' }
+                    - createdAt
+                    - { property: 'image', type: 'image', base_path: '%app.path.images%' }
+            form:
+                form_options: { validation_groups: ['Default'] }
+                fields:
+                    - { type: 'group', css_class: 'col-sm-8', label: 'Basic information', icon: 'pencil' }
+                    - { property: 'name', css_class: 'large' }
+                    - { property: 'link', type: 'url', css_class: 'large' }
+                    - { property: 'backgroundColor', type: 'choice', type_options: { choices: {'Red':'red', 'Green':'green', 'Orange':'orange', 'Light blue':'light-blue' } }  }
+                    - { property: 'enabled', label: 'Published' }
+                    - { property: 'createdAt' }
+                    - { type: 'group', css_class: 'col-sm-4', label: 'Attachments', icon: 'paperclip' }
+                    - { property: 'imageFile', label: 'Фоновое изображениe', type: 'vich_image', help: 'Рекомендуемый размер:: 720*555 px', type_options: { required: true } }

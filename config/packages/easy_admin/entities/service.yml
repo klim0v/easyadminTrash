@@ -1,0 +1,31 @@
+easy_admin:
+    design:
+        assets:
+            js:
+                - '/js/ckeditor/ckeditor.js'
+                - '/js/ckeditor_list.js'
+    entities:
+        Service:
+            class: App\Entity\Service
+            label: 'Services'
+            form:
+                fields:
+                    - { type: 'group', css_class: 'col-sm-8', label: 'Basic information', icon: 'pencil' }
+                    - { property: 'name', css_class: 'large'}
+                    - description
+                    - { property: 'enabled', label: 'Published' }
+                    - { property: 'createdAt' }
+                    - { type: 'group', css_class: 'col-sm-4', label: 'Attachments', icon: 'paperclip' }
+                    - { property: 'images', label: 'Изображения', type: 'collection', type_options: { entry_type: 'App\Type\ImageType', by_reference: false }}
+            list:
+                actions: ['-new']
+                fields:
+                    - id
+                    - { property: 'enabled', type: 'toggle' }
+                    - name
+                    - { property: 'createdAt', format: 'j / M / Y' }
+                    - images
+            edit:
+                label: 'Services'
+            new:
+                label: 'Services'

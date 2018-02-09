@@ -1,0 +1,29 @@
+# This file sets the configuration of the main menu. If your backend is simple,
+# you probably can leave the 'menu' option empty and rely on the default menu
+# created by EasyAdmin.
+#
+# NOTE: this demo application splits the backend configuration into several
+# small files for educational purposes. In your application you can put the
+# entire backend configuration in just one file.
+#
+# The configuration options are explained in detail in the bundle documentation,
+# which is published at https://github.com/javiereguiluz/EasyAdminBundle
+easy_admin:
+    design:
+        menu:
+            - label: 'menu.banners'
+              icon: 'paperclip'
+              children:
+                  - { entity: 'Banner', icon: 'th-list', label: 'menu.banner.list', params: { sortField: 'createdAt' }, default: true }
+                  - { entity: 'Banner', icon: 'plus-circle', label: 'menu.banner.add', params: { action: 'new' } }
+#                  - { entity: 'Category', icon: 'tags', label: 'menu.category' }
+            - label: 'menu.services'
+              icon: 'tags'
+              children:
+                  - { entity: 'Service', icon: 'th-list', label: 'menu.service.list', params: { sortField: 'createdAt' }, default: true }
+                  - { entity: 'Service', icon: 'plus-circle', label: 'menu.service.add', params: { action: 'new' } }
+#            - { label: 'menu.purchase', entity: 'Purchase', icon: 'credit-card', params: { sortField: 'deliveryDate' } }
+#            - { label: 'menu.about' }
+#            - { label: 'menu.about.home', url: 'https://github.com/javiereguiluz/EasyAdminBundle', icon: 'home', target: '_blank' }
+#            - { label: 'menu.about.docs', url: 'https://github.com/javiereguiluz/EasyAdminBundle#getting-started-guide', icon: 'book', target: '_blank' }
+#            - { label: 'menu.about.issues', url: 'https://github.com/javiereguiluz/EasyAdminBundle/issues', icon: 'github', target: '_blank' }
